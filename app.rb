@@ -6,6 +6,6 @@ require 'sinatra/reloader'
 get '/' do
 	erb :index
 end
-get '/' do
-	erb :index
+get '/about' do
+	erb :about
 end
