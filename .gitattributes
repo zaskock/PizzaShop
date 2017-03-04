@@ -1,0 +1,7 @@
+$ cat .gitattributes
+*.rb linguist-language=Ruby
+*.erb linguist-language=Ruby
+$ cat .gitattributes
+/public/* linguist-vendored
+*.rb linguist-vendored=false
+*.erb linguist-vendored=false
