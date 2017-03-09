@@ -1,20 +1,26 @@
 <%@title="Main - PizzaShop"%>
 
-	<div class="raw">
+	<div class="row">
 <h3 class="text-center">Hello, We're Open!</h3>
 </br>
 	<%@products.each do |product|%>
-		<a style="white-space: pre-wrap;" class="col-md-4" href="/product/<%=product.id%>">
-<p class="text-center">
+<span style="white-space: pre-wrap;" class="col-md-4">
+<div class="text-center">
+<a href="/product/<%=product.id%>">
 <b><%=product.title%></b>
 <%=product.description%>
 size:		<%=product.size%>''
 price:	$<%=product.price%>
 </br>
 <img src="<%=product.path_to_image%>"></img>
-</p>
 </a>
-	<%end%>
+</div>
+<div class="text-center">
+<button class="btn btn-success" onclick="add_to_cart()">Add to shopping-cart</button>
+</div>
+</span>
+<%end%>
 	</div>
 </br>
+
 <!--button class="btn btn-success" onclick="something()">Click or Die</button>-->

@@ -5,3 +5,8 @@ x= x*1+1;
 window.localStorage.setItem('bbb', x);
 alert(x);
 }
+
+function add_to_cart()
+{
+alert('Added to shopping-cart');
+}
