@@ -6,7 +6,7 @@ window.localStorage.setItem('bbb', x);
 alert(x);
 }
 
-function add_to_cart()
+function add_to_cart(id)
 {
-alert('Added to shopping-cart');
+alert('Added to shopping-cart, Id: ' + id);
 }
