@@ -9,8 +9,7 @@ class CreateProducts < ActiveRecord::Migration
 			t.boolean :is_veg
 			t.boolean :is_best_offer
 			t.string :path_to_image
-
-			t.timestamps
+			t.timestamps null: false
 		end
 	end
 end
