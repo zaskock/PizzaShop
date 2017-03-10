@@ -8,5 +8,9 @@ alert(x);
 
 function add_to_cart(id)
 {
-alert('Added to shopping-cart, Id: ' + id);
+var key= 'product_' + id;
+var x=window.localStorage.getItem(key)
+x=x*1+1;
+window.localStorage.setItem(key, x);
+//alert('Added to shopping-cart, product_Id: ' + id);
 }
