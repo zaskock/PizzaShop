@@ -16,4 +16,22 @@ var x=window.localStorage.getItem(key)
 x=x*1+1;
 window.localStorage.setItem(key, x);
 alert('Added to shopping-cart, product_Id: ' + id + '.\nTotal:\n' + cart_contains());
+update_orders();
 }
+
+function update_orders()
+{
+	var orders = get_orders();
+	$('#orders_input').val(orders);
+	}
+
+
+function get_orders()
+{
+	var x="";
+	for (var i = 0; i < localStorage.length; i++)
+	{
+		x= x + (localStorage.key(i)) + "=" + localStorage.getItem(localStorage.key(i)) + ",";
+	}
+return (x);
+	}
