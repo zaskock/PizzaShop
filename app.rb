@@ -19,6 +19,10 @@ end
 get '/about' do
 	erb :about
 end
+
 post '/cart' do
-	erb "ok"
+#string to array of integers then array to hash
+	@orders=params[:orders].scan(/[0-9]+/)
+	@orders=Hash[*@orders]
+	erb :cart
 end
