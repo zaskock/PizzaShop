@@ -1,4 +1,17 @@
-sinatra-bootstrap-clean
-=======================
+#####It's about learning Ruby and it's gems to build some basic web-site with simple functionality.
+Project is based on Sinatra and Active Record and represents a pizza-shop with all the necessary features.
 
-Cleaned version of https://github.com/bootstrap-ruby/sinatra-bootstrap
+####Gems Used:
+- "sinatra"
+- "sqlite3"
+- "activerecord", "4.1.6"
+- "sinatra-activerecord"
+- "sinatra-contrib"
+
+####Other Sources:
+- [Demonstrator for Sinatra and Twitter Bootstrap.](https://github.com/bootstrap-ruby/sinatra-bootstrap/)
+
+####What's new:
+- vanilla.js
+- HTML5 (LocalStorage)
+
