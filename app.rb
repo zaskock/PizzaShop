@@ -22,6 +22,7 @@ end
 
 post '/cart' do
 #string to array then array to hash
+	@orders_input=params[:orders]
 	@orders=params[:orders].scan(/[0-9]+/)
 	@orders.each_index{|i| i.even? ? @orders[i]=@products.find(@orders[i]) : 0}
 	@orders=Hash[*@orders]
