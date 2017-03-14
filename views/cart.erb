@@ -13,8 +13,7 @@
 	</thead>
 	<tbody>
 		<%@total=0 %>
-		<%@orders.each do |product_id, count| %>
-			<%product=@products.find(product_id) %>
+		<%@orders.each do |product, count| %>
 			<%@total+=product.price*count.to_i%>
 			<tr>
 				<td><img src="<%=product.path_to_image%>"></img></td>

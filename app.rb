@@ -21,8 +21,9 @@ get '/about' do
 end
 
 post '/cart' do
-#string to array of integers then array to hash
+#string to array then array to hash
 	@orders=params[:orders].scan(/[0-9]+/)
+	@orders.each_index{|i| i.even? ? @orders[i]=@products.find(@orders[i]) : 0}
 	@orders=Hash[*@orders]
 	erb :cart
 end
