@@ -22,5 +22,4 @@ price:	$<%=product.price%>
 <%end%>
 	</div>
 </br>
-
-<!--<button class="btn btn-success" onclick="alert (cart_contains())">Check my shopping-cart</button>-->
+<script type="text/javascript"> <%= (@success && @success.length > 0) ? "clear_cart();" : "" %></script>

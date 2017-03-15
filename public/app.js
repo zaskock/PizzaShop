@@ -7,7 +7,7 @@ function cart_contains()
 		x= x + (localStorage.key(i)) + " - " + localStorage.getItem(localStorage.key(i)) + "\n";
 	}
 return (x);
-	}
+}
 
 function add_to_cart(id)
 {
@@ -24,7 +24,7 @@ function update_orders()
 {
 	var orders = get_orders();
 	$('#orders_input').val(orders);
-	}
+}
 
 
 function get_orders()
@@ -35,7 +35,7 @@ function get_orders()
 		x= x + (localStorage.key(i)) + "=" + localStorage.getItem(localStorage.key(i)) + ",";
 	}
 return (x);
-	}
+}
 
 function get_orders_number()
 {
@@ -45,10 +45,15 @@ function get_orders_number()
 		x= x + localStorage.getItem(localStorage.key(i))*1;
 	}
 return (x);
-	}
+}
 
-	function update_button()
+function update_button()
 {
 	var str="Shopping cart (" + get_orders_number() + ")"
 	$('#orders_button').val(str);
-	}
+}
+
+function clear_cart()
+{
+	localStorage.clear();
+}
