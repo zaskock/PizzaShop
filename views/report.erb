@@ -1,0 +1,24 @@
+<%@title="Shopping-Cart - PizzaShop"%>
+<table class="table table-striped">
+	<thead><tr><th>Id</th><th>Details</th><th>Name</th><th>Phone</th><th>Address</th></tr></thead>
+	<tbody>
+		<%@total=0 %>
+		<%@orders.each do |order| %>
+			<tr>
+				<td><%=order.id%></td>
+				<td>
+				<%order.details.each do |key, value|%>
+				<%="#{key.title} - #{value}</br>"%>
+				<%@total+= value.to_i%>
+				<%end%>
+				</td>
+				<td><%=order.name%></td>
+				<td><%=order.phone%></td>
+				<td><%=order.address%></td>
+			</tr>
+
+		<%end%>
+	</tbody>
+</table>
+<hr><p class="text-right"><strong><%="Total: #{@total} items ordered"%></strong></p><hr>
+
