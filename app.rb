@@ -66,7 +66,7 @@ post '/place_order' do
 end
 
 def hash_from_string (s)
-	s=s.scan(/[0-9]+/)
+	s.respond_to?(:scan) ? s=s.scan(/[0-9]+/) : return
 	s.each_index{|i| i.even? ? s[i]=@products.find(s[i]) : 0}
 	s=Hash[*s]
 return s
