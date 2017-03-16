@@ -1,23 +1,25 @@
 <%@title="Shopping-Cart - PizzaShop"%>
-<table class="table table-striped">
-	<thead><tr><th>Image</th><th>Title</th><th>Price, $ per piece</th><th>Count</th><th>Price, $ per all</th></tr></thead>
-	<tbody>
+
+
+<%if @orders&&@orders!={}%>
+	<table class="table table-striped">
+		<thead><tr><th>Image</th><th>Title</th><th>Price, $ per piece</th><th>Count</th><th>Price, $ per all</th></tr></thead>
+		<tbody>
 		<%@total=0 %>
 		<%@orders.each do |product, count| %>
 			<%@total+=product.price*count.to_i%>
-			<tr>
-				<td><img  height="60" width="90"src="<%=product.path_to_image%>"></img></td>
-				<td><%=product.title%></td>
-				<td><%=product.price%></td>
-				<td><%=count%></td>
-				<td><%=product.price*count.to_i%></td>
-			</tr>
-		<%end%>
+				<tr>
+					<td><img  height="60" width="90"src="<%=product.path_to_image%>"></img></td>
+					<td><%=product.title%></td>
+					<td><%=product.price%></td>
+					<td><%=count%></td>
+					<td><%=product.price*count.to_i%></td>
+				</tr>
+			<%end%>
 	</tbody>
-</table>
+	</table>
 <hr><p class="text-right"><strong><%="Total: $#{@total}"%></strong></p><hr>
-
-<form id="visit form" action="/place_order" method="POST" role="form">
+<form id="order form" action="/place_order" method="POST" role="form">
 <input name="order[details]" id="orders_input" type="hidden" value="<%=@orders_input%>" placeholder=""/>
 	<div class="form-group">
 		<label>Your name:</label>
@@ -33,5 +35,18 @@
 		<label>Delivery address:</label>
 		<textarea rows="1" name="order[address]" class="form-control" placeholder="Suburb, Street, Building, Apartments"><%=@order.address%></textarea>
 	</div>
-	<button type="submit" class="btn btn-success">Process My Order!</button>
-</form></br>
+	<span class="text-left col-md-3"><button type="submit" class="btn btn-md btn-success">Process My Order!</button></span>
+	
+</form>
+
+<form id="cancel form" action="/cart" method="POST" role="form">
+<span class="text-right col-md-9"><button type="control" class="btn btn-danger" onclick="clear_cart()">Clear Shopping-cart!</button></span>
+</form>
+</br>
+	<%else%>
+		<%@success="Your cart is empty! Buy something and be happy!" %>
+	<%end%>
+
+
+
+
