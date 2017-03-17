@@ -29,29 +29,25 @@ get '/about' do
 end
 
 get '/report' do
-	@orders=Order.all
+#listing orders in filo mode
+	@orders=Order.order('created_at DESC')
+#replacing a string in the details field with the hash of a form: {product_object1=>quantity_ordered1,...} for each of the orders
 	@orders.each {|order| order.details=hash_from_string(order.details)}
 	erb :report
 end
 
 post '/cart' do
-#string to array then array to hash
+
 	@orders_input=params[:orders]
 	@orders=hash_from_string (@orders_input)
-	# @orders=params[:orders].scan(/[0-9]+/)
-	# @orders.each_index{|i| i.even? ? @orders[i]=@products.find(@orders[i]) : 0}
-	# @orders=Hash[*@orders]
+
 	erb :cart
 end
 
 post '/place_order' do
-#string to array then array to hash
+
 	@orders_input=params[:order][:details]
 	@orders=hash_from_string (@orders_input)
-	# @orders=params[:order][:details].scan(/[0-9]+/)
-	# @orders.each_index{|i| i.even? ? @orders[i]=@products.find(@orders[i]) : 0}
-	# @orders=Hash[*@orders]
-
 
 	@order=Order.new params[:order]
 
@@ -66,8 +62,11 @@ post '/place_order' do
 end
 
 def hash_from_string (s)
+#if method verification ok then select series of digits from string and save as an array of strings ["1","17","2","1",...]
 	s.respond_to?(:scan) ? s=s.scan(/[0-9]+/) : return
+#replace each even element of an array with corresponding product object
 	s.each_index{|i| i.even? ? s[i]=@products.find(s[i]) : 0}
+#convert array to hash, even elements become keys
 	s=Hash[*s]
 return s
 end
