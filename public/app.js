@@ -33,12 +33,12 @@ return (x);
 function update_orders()
 {
 	var orders = get_orders();
-	$('#orders_input').val(orders);
+	$('.orders_input').val(orders);
 }
 //put number of orders into text of a shopping-cart button
 function update_button()
 {
-	var str="Shopping cart (" + get_orders_number() + ")"
+	var str="Shopping-cart (" + get_orders_number() + ")"
 	$('#orders_button').val(str);
 }
 //clear shopping-cart (called on order submit)
