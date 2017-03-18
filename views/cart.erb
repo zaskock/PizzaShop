@@ -1,6 +1,5 @@
 <%@title="Shopping-Cart - PizzaShop"%>
 
-
 <%if @orders&&@orders!={}%>
 	<table class="table table-striped">
 		<thead><tr><th>Image</th><th>Title</th><th>Price, $ per piece</th><th>Count</th><th>Price, $ per all</th></tr></thead>
@@ -9,7 +8,7 @@
 		<%@orders.each do |product, count| %>
 			<%@total+=product.price*count.to_i%>
 				<tr>
-					<td><img  height="60" width="90"src="<%=product.path_to_image%>"></img></td>
+					<td><img height="60" width="90"src="<%=product.path_to_image%>"></img></td>
 					<td><%=product.title%></td>
 					<td><%=product.price%></td>
 					<td><%=count%></td>
@@ -20,7 +19,7 @@
 	</table>
 <hr><p class="text-right"><strong><%="Total: $#{@total}"%></strong></p><hr>
 <form id="order form" action="/place_order" method="POST" role="form">
-<input name="order[details]" id="orders_input" type="hidden" value="<%=@orders_input%>" placeholder=""/>
+<input name="order[details]" class="orders_input" type="hidden" value="<%=@orders_input%>" placeholder=""/>
 	<div class="form-group">
 		<label>Your name:</label>
 		<input name="order[name]" type="text" class="form-control" value="<%=@order.name%>" placeholder="Your name">
@@ -35,7 +34,7 @@
 		<label>Delivery address:</label>
 		<textarea rows="1" name="order[address]" class="form-control" placeholder="Suburb, Street, Building, Apartments"><%=@order.address%></textarea>
 	</div>
-	<span class="text-left col-md-3"><button type="submit" class="btn btn-md btn-success">Process My Order!</button></span>
+	<span class="text-left col-md-3"><button type="submit" class="btn btn-md btn-success" onmouseover="update_orders();">Process My Order!</button></span>
 	
 </form>
 
@@ -46,7 +45,3 @@
 	<%else%>
 		<%@success="Your cart is empty! Buy something and be happy!" %>
 	<%end%>
-
-
-
-
