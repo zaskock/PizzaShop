@@ -31,14 +31,15 @@ end
 get '/report' do
 #listing orders in filo mode
 	@orders=Order.order('created_at DESC')
-#replacing a string in the details field with the hash of a form: {product_object1=>quantity_ordered1,...} for each of the orders
+#replacing a string in the details field with the hash of a form: {product_object1=>"quantity_ordered1",...} for each of the orders
 	@orders.each {|order| order.details=hash_from_string(order.details)}
 	erb :report
 end
 
 post '/cart' do
-
+#take order data from form save as a global to save entered values in fields
 	@orders_input=params[:orders]
+
 	@orders=hash_from_string (@orders_input)
 
 	erb :cart
